@@ -1,0 +1,27 @@
+[
+  {
+    "wardNumber": 101,
+    "capacity": 30,
+    "specialization": "General Ward"
+  },
+  {
+    "wardNumber": 201,
+    "capacity": 10,
+    "specialization": "Emergency Ward"
+  },
+  {
+    "wardNumber": 301,
+    "capacity": 8,
+    "specialization": "Intensive Care Unit"
+  },
+  {
+    "wardNumber": 401,
+    "capacity": 6,
+    "specialization": "Intensive Coronary Care Unit"
+  },
+  {
+    "wardNumber": 501,
+    "capacity": 15,
+    "specialization": "Nursery"
+  }
+]
