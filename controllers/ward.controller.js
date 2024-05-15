@@ -6,20 +6,20 @@ const wardData = JSON.parse(jsonData);
 
 const Ward = require("../models/ward.model");
 
-const seedWardDatabase = async () => {
-  try {
-    for (const ward of wardData) {
-      const newWard = new Ward(ward);
-      await newWard.save();
-      console.log(`Ward ${newWard.wardNumber} seeded`);
-    }
-    console.log("Ward database seeded successfully");
-  } catch (error) {
-    console.log("Error seeding ward database:", error);
-  } finally {
-    mongoose.disconnect();
-  }
-};
+// const seedWardDatabase = async () => {
+//   try {
+//     for (const ward of wardData) {
+//       const newWard = new Ward(ward);
+//       await newWard.save();
+//       console.log(`Ward ${newWard.wardNumber} seeded`);
+//     }
+//     console.log("Ward database seeded successfully");
+//   } catch (error) {
+//     console.log("Error seeding ward database:", error);
+//   } finally {
+//     mongoose.disconnect();
+//   }
+// };
 
 // seedWardDatabase();
 
