@@ -15,7 +15,7 @@ router.route("/").get(getAllWards);
 //Add a ward
 router.route("/").post(addWard);
 //Edit a ward
-router.route("/:id").post(editWard);
+router.route("/:id").put(editWard);
 //Delete a ward
 router.route("/:id").delete(deleteWard);
 //Get a ward by id
