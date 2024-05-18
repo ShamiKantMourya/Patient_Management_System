@@ -73,12 +73,12 @@ exports.addWard = async (req, res) => {
 exports.editWard = async (req, res) => {
   try {
     const wardId = req.params.id;
-    const ward = await Ward.findById(wardId);
+    // const ward = await Ward.findById(wardId);
     const updatedData = req.body;
     const updatedWard = await Ward.findByIdAndUpdate(wardId, updatedData, {
       new: true,
     });
-    await ward.save();
+    await updatedWard.save();
     if (updatedWard) {
       res.status(200).json({
         success: true,
