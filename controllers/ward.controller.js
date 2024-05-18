@@ -73,10 +73,12 @@ exports.addWard = async (req, res) => {
 exports.editWard = async (req, res) => {
   try {
     const wardId = req.params.id;
+    const ward = await Ward.findById(wardId);
     const updatedData = req.body;
     const updatedWard = await Ward.findByIdAndUpdate(wardId, updatedData, {
       new: true,
     });
+    await ward.save();
     if (updatedWard) {
       res.status(200).json({
         success: true,
@@ -100,7 +102,9 @@ exports.editWard = async (req, res) => {
 exports.deleteWard = async (req, res) => {
   try {
     const wardId = req.params.id;
+    const ward = await Ward.findById(wardId);
     const deletedWard = await Ward.findByIdAndDelete(wardId);
+    // await ward.save();
     if (deletedWard) {
       res.status(200).json({
         success: true,

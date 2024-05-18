@@ -76,12 +76,14 @@ exports.addPatient = async (req, res) => {
 exports.editPatient = async (req, res) => {
   try {
     const patientId = req.params.id;
+    const patient = await Patient.findById(patientId);
     const updatedData = req.body;
     const updatedPatient = await Patient.findByIdAndUpdate(
       patientId,
       updatedData,
       { new: true },
     );
+    await patient.save();
     if (updatedPatient) {
       res.status(200).json({
         success: true,
