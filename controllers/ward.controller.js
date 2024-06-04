@@ -26,17 +26,10 @@ const Ward = require("../models/ward.model");
 exports.getAllWards = async (req, res) => {
   try {
     const wards = await Ward.find({});
-    if (wards) {
-      res.status(200).json({
-        success: true,
-        ward: wards,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: "Ward not found",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      ward: wards,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -50,18 +43,11 @@ exports.addWard = async (req, res) => {
     const data = req.body;
     const newWard = new Ward(data);
     const savedWard = await newWard.save();
-    if (savedWard) {
-      res.status(201).json({
-        success: true,
-        message: "Ward added successfully",
-        ward: savedWard,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Ward not added",
-      });
-    }
+    res.status(201).json({
+      success: true,
+      message: "Ward added successfully",
+      ward: savedWard,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -79,18 +65,11 @@ exports.editWard = async (req, res) => {
       new: true,
     });
     await updatedWard.save();
-    if (updatedWard) {
-      res.status(200).json({
-        success: true,
-        message: "Ward updated successfully",
-        ward: updatedWard,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Ward not updated",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      message: "Ward updated successfully",
+      ward: updatedWard,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -105,18 +84,11 @@ exports.deleteWard = async (req, res) => {
     const ward = await Ward.findById(wardId);
     const deletedWard = await Ward.findByIdAndDelete(wardId);
     // await ward.save();
-    if (deletedWard) {
-      res.status(200).json({
-        success: true,
-        message: "Ward deleted successfully",
-        ward: deletedWard,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Ward not deleted",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      message: "Ward deleted successfully",
+      ward: deletedWard,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -129,17 +101,10 @@ exports.getWardById = async (req, res) => {
   try {
     const wardId = req.params.id;
     const ward = await Ward.findById(wardId);
-    if (ward) {
-      res.status(200).json({
-        success: true,
-        ward: ward,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: "Ward not found",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      ward: ward,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,

@@ -29,17 +29,10 @@ exports.getAllPatients = async (req, res) => {
       path: "ward",
       select: "wardNumber capacity specialization",
     });
-    if (patients) {
-      res.status(200).json({
-        success: true,
-        patient: patients,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Patient not found",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      patient: patients,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -53,18 +46,11 @@ exports.addPatient = async (req, res) => {
     const data = req.body;
     const newPatient = new Patient(data);
     const savedPatient = await newPatient.save();
-    if (savedPatient) {
-      res.status(201).json({
-        success: true,
-        message: "Patient added successfully",
-        patient: savedPatient,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Patient not added",
-      });
-    }
+    res.status(201).json({
+      success: true,
+      message: "Patient added successfully",
+      patient: savedPatient,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -84,18 +70,11 @@ exports.editPatient = async (req, res) => {
       { new: true },
     );
     await patient.save();
-    if (updatedPatient) {
-      res.status(200).json({
-        success: true,
-        message: "Patient updated successfully",
-        patient: updatedPatient,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Patient not updated",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      message: "Patient updated successfully",
+      patient: updatedPatient,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -108,18 +87,11 @@ exports.deletePatient = async (req, res) => {
   try {
     const patientId = req.params.id;
     const deletedPatient = await Patient.findByIdAndDelete(patientId);
-    if (deletedPatient) {
-      res.status(200).json({
-        success: true,
-        message: "Patient deleted successfully",
-        patient: deletedPatient,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Patient not deleted",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      message: "Patient deleted successfully",
+      patient: deletedPatient,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -132,17 +104,10 @@ exports.getPatientByName = async (req, res) => {
   try {
     const patientName = req.params.name;
     const patient = await Patient.findOne({ name: patientName });
-    if (patient) {
-      res.status(200).json({
-        success: true,
-        patient: patient,
-      });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: "Patient not found",
-      });
-    }
+    res.status(200).json({
+      success: true,
+      patient: patient,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
